@@ -21,11 +21,15 @@
 - 见以下详细流程
 
 - 最后一步根目录下执行（格式：
+
   ./build/tools/releasetools/ota_from_target_files -v -i  out/.../old.zip  -p out/host/linux-x86/ -k build/target/product/security/testkey out/.../new.zip  out/.../update.zip
 
  v 执行过程中打印出执行的命令
+ 
  i 生成增量OTA包（差异包）
+ 
  p 定义脚本用到的一些可执行文件的路径
+ 
  k 签名所使用的密钥
 
 ### 差异包生成详细流程
