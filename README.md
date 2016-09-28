@@ -39,9 +39,14 @@
 - ./mkimage.sh ota
 - make otapackage
 - 烧录固件img到设备来更换系统
-- 重命名完整包out/.../rk3288/rk3288-target_files-eng.xxx.zip和out/target/product/rk3288/obj/PACKAGING/target_files_intermediates/rk3288-target_files-eng.xxx.zip
-- 更改版本号/device/rockchip/rk3288/rk3288.mk后，删除out/target/product/rkxxsdk/system/build.prop
+- 重命名完整包
+out/.../rk3288/rk3288-target_files-eng.xxx.zip和out/target/product/rk3288/obj/PACKAGING/target_files_intermediates/rk3288-target_files-eng.xxx.zip
+
+- 更改版本号
+/device/rockchip/rk3288/rk3288.mk后，删除out/target/product/rkxxsdk/system/build.prop
   备注：不需要更改版本号则跳过此步骤，在/target_files_intermediates下已有需要比较的zip版本完整包，重命名后，可直接重复以上步骤来生成新版本的完整包，比较差异的两个版本完整包生成在此目录/target_files_intermediates下
+  
 -  最后一步执行（例：
 ./build/tools/releasetools/ota_from_target_files -v -i out/target/product/rk3288/obj/PACKAGING/target_files_intermediates/rk3288-target_files-eng-old.gzq.zip -p out/host/linux-x86/ -k build/target/product/security/testkey out/target/product/rk3288/obj/PACKAGING/target_files_intermediates/rk3288-target_files-eng.gzq.zip out/target/product/rk3288/rk3288-ota-eng.wake.zip
+
 - 差异包生成。重命名update.zip后，可拷贝到设备sd卡根目录下，断掉数据线，设备则弹出升级框。
