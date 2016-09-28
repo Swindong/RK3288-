@@ -22,20 +22,24 @@
 在/target_files_intermediates下已有需要比较的两个zip版本完整包，新版本完整包是版本号已更新前提下，则直接跳到最后一步，否则，进行以下步骤。
 
 - 编译内核（kernel目录）
+
 make rk3288-tb_8846.img -j3
 
 - 编译安卓（根目录）
+
 make -j6
 
 - 固件生成（根目录）
+
 ./mkimage.sh ota
 
 - 完整包生成（根目录）
+
 make otapackage
 
 - 烧录固件img到设备来更换系统
-
 - 重命名完整包
+
 out/.../rk3288/rk3288-target_files-eng.xxx.zip和out/target/product/rk3288/obj/PACKAGING/target_files_intermediates/rk3288-target_files-eng.xxx.zip
 
 - 更改版本号
