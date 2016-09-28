@@ -19,7 +19,8 @@
 简介：将out/target/product/rk3288/obj/PACKAGING/target_files_intermediates目录下两个新旧完整包进行差异生成差异包
 - make otapackage
 - 见以下详细流程
-最后一步根目录下执行（格式：
+
+- 最后一步根目录下执行（格式：
   ./build/tools/releasetools/ota_from_target_files -v -i  out/.../old.zip  -p out/host/linux-x86/ -k build/target/product/security/testkey out/.../new.zip  out/.../update.zip
 
  v 执行过程中打印出执行的命令
