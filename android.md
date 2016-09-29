@@ -52,20 +52,18 @@ rk3288 Android source 4.4.2  bottom driver system
 
 3. 创建aidl接口 ----- 具有跨进程访问能力的描述性语言`（android interface definition language,aidl）` --- aidl会自动生成一个stub,我们需要在service中继承该stub，并且在service中使用该接口
 
-  - 硬件访问服务接口一般在在`/framework/base/core/java/android/os/`该目录下
+ - 硬件访问服务接口一般在在`/framework/base/core/java/android/os/`该目录下
     `IFregService.aidl`
-  
       例子：
       `{
         package android.os;
         interface IFregServer{ ---- 以下两个接口是给予service 所用的
         void setVal(int val);
-
         int getVal();
         };
         }`
   
-   - 加入到`/framework/base`中的`LOCAL_SRC_FILE`中并且进行编译
+  - 加入到`/framework/base`中的`LOCAL_SRC_FILE`中并且进行编译
       需要在`/framework/base`中进行编译，编译过后的`framework.jar` 包含了`IFregServer`接口，它继承了`android.os.interface.`
 
 4. 创建jni接口 ---- `/framework/base/service/jni`
@@ -80,9 +78,10 @@ server程序必须把aidl中所有的接口都实现，否则编译器报错
 6. 启动硬件访问服务
 `/framwork/base/services/java/com/android/server/SystemService.java`
 
-其中`addService("reeman",new ReemanService()); `--- 该接口决定了上次`getservice`的时候需要传递的参数
+  其中`addService("reeman",new ReemanService()); `--- 该接口决定了上次`getservice`的时候需要传递的参数
 
 7. 在app层中加入反射，并且加入aidl编一下
+
 `try{
   Object object = new Object();
   
