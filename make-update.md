@@ -1,8 +1,8 @@
 #  编译升级 
 
-参考：http://wenku.baidu.com/link?url=uz3k1AG_krK_GcjDVxU3eYtKh9W1EVYLyQAoREiK-GickkPcDj0yfM4jmExR5-_l4IFdAjqpuFDfOT1oF-DBe7x3tgZtkoHIPp7njKDAcK3
+可参考[`差异包升级`](http://wenku.baidu.com/link?url=uz3k1AG_krK_GcjDVxU3eYtKh9W1EVYLyQAoREiK-GickkPcDj0yfM4jmExR5-_l4IFdAjqpuFDfOT1oF-DBe7x3tgZtkoHIPp7njKDAcK3)
 
-参考：[http://blog.csdn.net/late0001/article/details/51819700](http://blog.csdn.net/late0001/article/details/51819700 "差异包升级")
+可参考：[`差异包升级详解`](http://blog.csdn.net/late0001/article/details/51819700)
 
 简介：将out/target/product/rk3288/obj/PACKAGING/target_files_intermediates目录下两个新旧完整包进行差异生成差异包
 
