@@ -9,14 +9,13 @@
   `./build/tools/releasetools/ota_from_target_files -v -i  out/.../old.zip  -p out/host/linux-x86/ -k build/target/product/security/testkey out/.../new.zip  out/.../update.zip`
 
  | v |执行过程中打印出执行的命令|
- |-------|--------|
  
 | i：|生成增量OTA包（差异包）|
  
 | p：|定义脚本用到的一些可执行文件的路径，主机编译环境| 
  
  k：签名所使用的密钥
-
+---------------------------------------------------------------
 **差异包生成详细流程**
 
 在`/target_files_intermediates`下已有需要比较的两个zip版本完整包，新版本完整包是版本号已更新前提下，则直接跳到最后一步，否则，进行以下步骤。
