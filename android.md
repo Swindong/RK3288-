@@ -48,10 +48,10 @@ rk3288 Android source 4.4.2  bottom driver system
 需要能report 需要能接收tty3和tty4信息
 
 2. 创建对应hal层序 
-- 结束后会自动放在/system/lib/hw下， 如果没有需要自行防止
-- 打开需要控制的文件比如report驱动 xfm驱动
-- 并不绝对要绑定驱动，我们可以只使用read与write进行操作
-- 绑定的是hal与service和aidl , kernel 与上层有绝对的分离 
+ - 结束后会自动放在/system/lib/hw下， 如果没有需要自行防止
+ - 打开需要控制的文件比如report驱动 xfm驱动
+ - 并不绝对要绑定驱动，我们可以只使用read与write进行操作
+ - 绑定的是hal与service和aidl , kernel 与上层有绝对的分离 
 
 3. 创建aidl接口 
 --- 具有跨进程访问能力的描述性语言`（android interface definition language,aidl）`
