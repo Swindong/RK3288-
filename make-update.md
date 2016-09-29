@@ -9,6 +9,7 @@
   `./build/tools/releasetools/ota_from_target_files -v -i  out/.../old.zip  -p out/host/linux-x86/ -k build/target/product/security/testkey out/.../new.zip  out/.../update.zip`
 
  | v |执行过程中打印出执行的命令|
+ |-------|--------|
  
 | i：|生成增量OTA包（差异包）|
  
@@ -17,17 +18,18 @@
  k：签名所使用的密钥
 
 **差异包生成详细流程**
+
 在`/target_files_intermediates`下已有需要比较的两个zip版本完整包，新版本完整包是版本号已更新前提下，则直接跳到最后一步，否则，进行以下步骤。
 
-1. 编译内核（kernel目录）
+- 编译内核（kernel目录）
 
 make rk3288-tb_8846.img -j3
 
-2. 编译安卓（根目录）
+- 编译安卓（根目录）
 
-  make -j6
+make -j6
 
-3. 固件生成（根目录）
+- 固件生成（根目录）
 
 ./mkimage.sh ota
 
