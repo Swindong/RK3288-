@@ -67,13 +67,11 @@ rk3288 Android source 4.4.2  bottom driver system
       需要在`/framework/base`中进行编译，编译过后的`framework.jar` 包含了`IFregServer`接口，它继承了`android.os.interface.`
 
 4. 创建jni接口 ---- `/framework/base/service/jni`
-
 我们把该方法`/framework/base/services/jni/com_android_service_FregService.cpp` 放在该目录中`#include <hardware/freg.h> `
 该头文件无法找到
 加入`jni_onload.cpp`中
 
 5. 创建server程序 ---- `/framework/base/core/java/android/service/FregService.java`
-
 --- 在该server内部定义了一个Binder本地对象Stub类，实现了`IFregService`的接口，并继承binder类。
 server程序必须把aidl中所有的接口都实现，否则编译器报错
 
