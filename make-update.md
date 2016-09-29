@@ -1,33 +1,33 @@
 #  编译升级 
 
-可参考[**rk3288 RKxx_升级打包方式总结v1.**`](http://wenku.baidu.com/link?url=uz3k1AG_krK_GcjDVxU3eYtKh9W1EVYLyQAoREiK-GickkPcDj0yfM4jmExR5-_l4IFdAjqpuFDfOT1oF-DBe7x3tgZtkoHIPp7njKDAcK3)[*update.zip包的制作详解*](http://blog.csdn.net/late0001/article/details/51819700)
+可参考[`rk3288 RKxx_升级打包方式总结v1.3`](http://wenku.baidu.com/link?url=uz3k1AG_krK_GcjDVxU3eYtKh9W1EVYLyQAoREiK-GickkPcDj0yfM4jmExR5-_l4IFdAjqpuFDfOT1oF-DBe7x3tgZtkoHIPp7njKDAcK3)   [`update.zip包的制作详解`](http://blog.csdn.net/late0001/article/details/51819700)
 
-差异包简介：将out/target/product/rk3288/obj/PACKAGING/target_files_intermediates目录下两个新旧完整包进行差异生成差异包
+差异包简介：将`out/target/product/rk3288/obj/PACKAGING/target_files_intermediates`目录下两个新旧完整包进行差异生成差异包
 
 最后一步根目录下执行（格式：
 
   `./build/tools/releasetools/ota_from_target_files -v -i  out/.../old.zip  -p out/host/linux-x86/ -k build/target/product/security/testkey out/.../new.zip  out/.../update.zip`
 
- v：执行过程中打印出执行的命令
+ | v |执行过程中打印出执行的命令|
  
- i：生成增量OTA包（差异包）
+| i：|生成增量OTA包（差异包）|
  
- p：定义脚本用到的一些可执行文件的路径，主机编译环境 
+| p：|定义脚本用到的一些可执行文件的路径，主机编译环境| 
  
  k：签名所使用的密钥
 
-## 差异包生成详细流程
-在/target_files_intermediates下已有需要比较的两个zip版本完整包，新版本完整包是版本号已更新前提下，则直接跳到最后一步，否则，进行以下步骤。
+**差异包生成详细流程**
+在`/target_files_intermediates`下已有需要比较的两个zip版本完整包，新版本完整包是版本号已更新前提下，则直接跳到最后一步，否则，进行以下步骤。
 
-- 编译内核（kernel目录）
+1. 编译内核（kernel目录）
 
 make rk3288-tb_8846.img -j3
 
-- 编译安卓（根目录）
+2. 编译安卓（根目录）
 
-make -j6
+  make -j6
 
-- 固件生成（根目录）
+3. 固件生成（根目录）
 
 ./mkimage.sh ota
 
