@@ -1,5 +1,7 @@
 # rk3288-
 rk3288 Android source 4.4.2  bottom driver system
+
+----------------------------------
 ## RK3288 android4.4.2系统源码
 - abi
 - art
@@ -56,10 +58,15 @@ rk3288 Android source 4.4.2  bottom driver system
 例子：
   `{
   package android.os;
+  
   interface IFregServer{ ---- 以下两个接口是给予service 所用的
+  
   void setVal(int val);
+  
   int getVal();
+  
   };
+  
   }`
 （2）加入到/framework/base中的LOCAL_SRC_FILE中并且进行编译
   需要在/framework/base中进行编译，编译过后的framework.jar 包含了IFregServer接口，它继承了android.os.interface.
@@ -80,17 +87,31 @@ rk3288 Android source 4.4.2  bottom driver system
 
 7.在app层中加入反射，并且加入aidl编一下
   `try{
+  
   Object object = new Object();
+  
   Method getService = Class.forName("android.os.ServiceManager").getMethod("getService", String.class);
+  
   Object obj = getService.invoke(object, new Object[]{new String("reeman")});
+  
   //System.out.println(obj.toString());
+  
   reemanService = IReemanService.Stub.asInterface((IBinder)obj);
+  
   }catch(ClassNotFoundException ex){
+  
   //ignored
+  
   }catch(NoSuchMethodException ex){
+  
   //ignored
+  
   }catch(IllegalAccessException ex){
+  
   //ignored
+  
   }catch(InvocationTargetException ex){
+  
   //ignored
+  
   }`
