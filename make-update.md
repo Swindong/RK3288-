@@ -17,48 +17,41 @@
  |k：|签名所使用的密钥|
  
 ---------------------------------------------------------------
+
 **差异包生成详细流程**
 
 在`/target_files_intermediates`下已有需要比较的两个zip版本完整包，新版本完整包是版本号已更新前提下，则直接跳到最后一步，否则，进行以下步骤。
 
 1. 编译内核（kernel目录）
-
 make rk3288-tb_8846.img -j3
 
-1. 编译安卓（根目录）
-
+2. 编译安卓（根目录）
 make -j6
 
-1. 固件生成（根目录）
-
+3. 固件生成（根目录）
 ./mkimage.sh ota
 
-1. 升级包生成（根目录）
-
+4. 升级包生成（根目录）
 make otapackage
 
-1. 烧录固件img到设备来更换系统
+5. 烧录固件img到设备来更换系统
+  - /RKTools/linux/Linux_Upgrade_Tool_v1.2
+  - cat config.ini |  adb reboot loader
+  - sudo ./upgrade_tool |  chmod 777 upgrade_tool
+  - 1
+  - di -k ,resource,-b,-m,-r,-s
+  - rd
 
-- /RKTools/linux/Linux_Upgrade_Tool_v1.2
-- cat config.ini |  adb reboot loader
-- sudo ./upgrade_tool |  chmod 777 upgrade_tool
-- 1
-- di -k ,resource,-b,-m,-r,-s
-- rd
-
-1. 重命名升级包
-
+6. 重命名升级包
 `out/.../rk3288/rk3288-target_files-eng.xxx.zip和out/target/product/rk3288/obj/PACKAGING/target_files_intermediates/rk3288-target_files-eng.xxx.zip`
 
-1. 更改版本号
-
+7. 更改版本号
 `/device/rockchip/rk3288/rk3288.mk`后，删除`out/target/product/rkxxsdk/system/build.prop`
   备注：不需要更改版本号则跳过此步骤，在/target_files_intermediates下已有需要比较的zip版本完整包，重命名后，可直接重复以上步骤来生成新版本的完整包，比较差异的两个版本完整包生成在此目录/target_files_intermediates下
   
-1. 差异包生成（根目录）
+8. 差异包生成（根目录）
+例：
+`./build/tools/releasetools/ota_from_target_files -v -i out/target/product/rk3288/obj/PACKAGING/target_files_intermediates/rk3288-target_files-eng-old.gzq.zip -p out/host/linux-x86/ -k build/target/product/security/testkey out/target/product/rk3288/obj/PACKAGING/target_files_intermediates/rk3288-target_files-eng.gzq.zip out/target/product/rk3288/rk3288-ota-eng.wake.zip`
 
-例：`./build/tools/releasetools/ota_from_target_files -v -i out/target/product/rk3288/obj/PACKAGING/target_files_intermediates/rk3288-target_files-eng-old.gzq.zip -p out/host/linux-x86/ -k build/target/product/security/testkey out/target/product/rk3288/obj/PACKAGING/target_files_intermediates/rk3288-target_files-eng.gzq.zip out/target/product/rk3288/rk3288-ota-eng.wake.zip`
-
-1. **系统更新**
-
+9. 系统更新
 重命名update.zip后，可拷贝到设备sd卡根目录下，断掉数据线，设备则弹出升级框。
