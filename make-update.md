@@ -38,6 +38,14 @@ make -j6
 make otapackage
 
 - 烧录固件img到设备来更换系统
+
+1. /RKTools/linux/Linux_Upgrade_Tool_v1.2
+2. cat config.ini |  adb reboot loader
+3. sudo ./upgrade_tool |  chmod 777 upgrade_tool
+4. 1
+5. di -k ,resource,-b,-m,-r,-s
+6. rd
+
 - 重命名升级包
 
 `out/.../rk3288/rk3288-target_files-eng.xxx.zip和out/target/product/rk3288/obj/PACKAGING/target_files_intermediates/rk3288-target_files-eng.xxx.zip`
