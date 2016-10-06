@@ -11,7 +11,7 @@
 - #if 1 | 0 ... #endif
 
 - define
-#define xxx
+define xxx
 ...
 #ifdef xxx
 ...
