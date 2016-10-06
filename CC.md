@@ -10,11 +10,12 @@
 
 - #if 1 | 0 ... #endif
 
-- #define xxx
-  ...
-  #ifdef xxx
-  ...
-  #endif
+- define
+#define xxx
+...
+#ifdef xxx
+...
+#endif
 
 - goto
 
