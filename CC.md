@@ -12,11 +12,11 @@
 
 - define
 
-        `#define xxx
+        #define xxx
         ...
         #ifdef xxx
         ...
-        #endif`
+        #endif
 
 - goto
 
