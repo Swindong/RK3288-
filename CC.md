@@ -8,14 +8,14 @@
 - break ：退出最近的循环
 
 
-- #if 1 | 0 ... #endif
+- if 1 | 0 ... #endif
 
 - define
 define xxx
 ...
-#ifdef xxx
+ifdef xxx
 ...
-#endif
+endif
 
 - goto
 
